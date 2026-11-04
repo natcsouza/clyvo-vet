@@ -17,7 +17,7 @@
 | O quê | Link |
 |---|---|
 | Aplicação no ar (Azure) | https://app-564099-solin.azurewebsites.net/solin/login |
-| Vídeo da apresentação (até 15 min) | `[link do YouTube]` |
+| Vídeo da apresentação | https://youtu.be/rrRGg9lsQ-E |
 | Backlog, release plan e plano de testes (Azure Boards) | https://dev.azure.com/RM564099/SOLIN%20-%20Clyvo%20Vet |
 | Testes de sistema (manuais + Selenium IDE) | [`testes/`](testes/README.md) |
 
