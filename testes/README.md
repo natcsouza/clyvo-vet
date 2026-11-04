@@ -7,7 +7,7 @@ Compliance, Quality Assurance & Tests · Challenge 2026 Clyvo Vet · FIAP 2TDSR
 | O quê | Link |
 |---|---|
 | Plano de testes manuais (Azure Boards) | https://dev.azure.com/RM564099/SOLIN%20-%20Clyvo%20Vet/_workitems |
-| Vídeo da configuração e execução dos testes automatizados | `[link do YouTube]` |
+| Vídeo da configuração e execução dos testes automatizados | https://youtu.be/zc41TOn7_7Q |
 | Testes automatizados (Selenium IDE) | [`selenium/SOLIN-testes.side`](selenium/SOLIN-testes.side) |
 
 ## Parte A — Testes manuais no Azure Boards
