@@ -269,6 +269,14 @@
           "value": "10000"
         },
         {
+          "id": "f12082a7-435f-476f-8f51-cdcc2a3416d9",
+          "comment": "nome único para o pet a cada execução",
+          "command": "executeScript",
+          "target": "return 'Bidu' + (Date.now() % 100000);",
+          "targets": [],
+          "value": "pet"
+        },
+        {
           "id": "14790d0c-233a-4ab8-bba5-c76886184f13",
           "comment": "",
           "command": "open",
@@ -282,7 +290,7 @@
           "command": "type",
           "target": "id=nome",
           "targets": [],
-          "value": "Bidu"
+          "value": "${pet}"
         },
         {
           "id": "b75d8535-5e5c-42d9-b426-852a1dbc52a8",
@@ -320,7 +328,7 @@
           "id": "87983ea0-2222-4f99-86e0-b07e9ce9ac62",
           "comment": "espera o pet ser salvo",
           "command": "waitForElementPresent",
-          "target": "xpath=//main[contains(normalize-space(.),\"Pet Bidu cadastrado com sucesso.\")]",
+          "target": "xpath=//main[contains(normalize-space(.),\"Pet ${pet} cadastrado com sucesso.\")]",
           "targets": [],
           "value": "10000"
         },
@@ -338,7 +346,7 @@
           "command": "select",
           "target": "id=petId",
           "targets": [],
-          "value": "label=Bidu · Cachorro"
+          "value": "label=${pet} · Cachorro"
         },
         {
           "id": "86f41a7f-b3c4-45e1-be44-14fa6bbca1be",
@@ -384,7 +392,7 @@
           "id": "1a85db47-ba08-477a-bf77-f4df5a70d344",
           "comment": "",
           "command": "assertElementPresent",
-          "target": "xpath=//main[contains(normalize-space(.),\"esse registro disparou um novo alerta para Bidu\")]",
+          "target": "xpath=//main[contains(normalize-space(.),\"esse registro disparou um novo alerta para ${pet}\")]",
           "targets": [],
           "value": ""
         },
