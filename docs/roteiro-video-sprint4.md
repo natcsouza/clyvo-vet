@@ -28,9 +28,9 @@ avisa o tutor e a Clyvo Vet quando algo sai do normal para aquela espécie."
 
 1. Entrar com `tutor.demo@solin.com` / `demo123`.
    **Fala:** "Essa é a área do tutor, já publicada na Azure. O painel mostra quantos pets ele tem, quantos estão com alerta e o último evento."
-2. Cadastrar pet → nome **Thor**, Cachorro, Labrador, 3 anos, Macho, 12.5 kg → Salvar.
+2. Cadastrar pet → nome **Pipoca**, Cachorro, Vira-lata, 3 anos, Macho, 12.5 kg → Salvar.
    **Fala:** "Ao cadastrar, o pet já passa a ser monitorado."
-3. Registrar evento → Thor, **Urinou**, Manual, data/hora = **9 horas atrás** → Salvar.
+3. Registrar evento → Pipoca, **Urinou**, Manual, data/hora = **9 horas atrás** → Salvar.
    **Fala:** "O limite do cachorro é 8 horas sem urinar. Como passaram 9, o SOLIN cria um alerta amarelo na hora. Se passasse de 16, seria vermelho."
 4. Abrir "Assistente SOLIN" e clicar em uma pergunta pronta.
    **Fala:** "O assistente responde com os dados reais do pet."
@@ -39,7 +39,7 @@ avisa o tutor e a Clyvo Vet quando algo sai do normal para aquela espécie."
 
 1. Sair e entrar com `vet.demo@clyvovet.com.br` / `demo123`.
    **Fala:** "Essa é a visão da Clyvo Vet. O veterinário vê os alertas de todos os pets, os críticos primeiro."
-2. Clicar em **Marcar resolvido** no alerta do Thor.
+2. Clicar em **Marcar resolvido** no alerta do Pipoca.
    **Fala:** "Depois de falar com o tutor, ele marca como resolvido e o alerta sai dos pendentes."
 3. Mostrar que o tutor não entra no painel do veterinário (logado como tutor, abrir `/solin/vet/painel` → 403).
    **Fala:** "Cada perfil só vê a própria área, isso é o Spring Security."
@@ -65,7 +65,7 @@ e sensor de umidade, mandam os eventos de urina em tempo real por MQTT. No SOLIN
 
 1. Portal da Azure → grupo `rg-564099-solin`.
    **Fala:** "O app roda num App Service com Java 17, e o banco é um PostgreSQL gerenciado da Azure. Tudo foi criado por um script com um comando por passo."
-2. Mostrar o banco (tabelas `TB_PET`, `TB_EVENTO`, `TB_ALERTA`) com o Thor e o alerta que criamos agora.
+2. Mostrar o banco (tabelas `TB_PET`, `TB_EVENTO`, `TB_ALERTA`) com o Pipoca e o alerta que criamos agora.
    **Fala:** "O Flyway cria e versiona as tabelas; aqui estão os dados que acabamos de cadastrar."
 
 ## 12:30 — Rodrigo · Decisões técnicas
