@@ -31,16 +31,19 @@ public class AlertaService {
 
     /**
      * Executa todas as regras cadastradas para o pet e persiste os
-     * alertas que dispararem. Chamado pelo EventoService apos cada
+     * alertas que dispararem. Uma regra que ja tem alerta pendente para
+     * o pet e pulada, para o mesmo alerta nao aparecer duas vezes. Chamado pelo EventoService apos cada
      * registro de evento.
      */
     @Transactional
     public List<Alerta> avaliarRegrasParaPet(Pet pet) {
         return regras.stream()
-                .map(r -> r.avaliar(pet))
-                .filter(java.util.Optional::isPresent)
-                .map(java.util.Optional::get)
-                .map(repository::save)
+                .filter(r -> !repository.existsByPetIdAndRegraAndResolvidoFalse(pet.getId(), r.nome()))
+                .map(r -> r.avaliar(pet).map(alerta -> {
+                    alerta.setRegra(r.nome());
+                    return repository.save(alerta);
+                }))
+                .flatMap(java.util.Optional::stream)
                 .toList();
     }
 

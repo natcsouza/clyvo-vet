@@ -18,4 +18,6 @@ public interface AlertaRepository extends JpaRepository<Alerta, Long> {
     List<Alerta> findByResolvidoOrderByDataHoraGeradoDesc(Boolean resolvido);
 
     long countByResolvido(Boolean resolvido);
+
+    boolean existsByPetIdAndRegraAndResolvidoFalse(Long petId, String regra);
 }

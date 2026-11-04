@@ -30,6 +30,9 @@ public class Alerta {
     @Column(name = "DH_GERADO", nullable = false)
     private LocalDateTime dataHoraGerado;
 
+    @Column(name = "DS_REGRA", length = 60)
+    private String regra;
+
     @Column(name = "ST_RESOLVIDO", nullable = false)
     private Boolean resolvido;
 

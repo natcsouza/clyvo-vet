@@ -23,4 +23,12 @@ public interface RegraAlertaStrategy {
      * Retorna o Alerta caso dispare, ou Optional.empty() caso contrario.
      */
     Optional<Alerta> avaliar(Pet pet);
+
+    /**
+     * Identifica a regra que gerou o alerta. Usado para nao repetir um
+     * alerta que ainda esta pendente.
+     */
+    default String nome() {
+        return org.springframework.util.ClassUtils.getUserClass(this).getSimpleName();
+    }
 }
