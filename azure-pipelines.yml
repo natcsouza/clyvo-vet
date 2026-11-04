@@ -1,0 +1,74 @@
+# Pipeline CI/CD do SOLIN - Sprint 4 (DevOps Tools & Cloud Computing)
+# CI: a cada push na branch master -> compila, roda os testes e publica o artefato (.jar)
+# CD: quando o CI gera um artefato novo -> publica o .jar no Azure Web App
+
+trigger:
+  branches:
+    include:
+      - master
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+
+  # ---------- CI ----------
+  - stage: CI
+    displayName: CI - Build e testes
+    jobs:
+      - job: build
+        displayName: Compilar, testar e gerar o artefato
+        steps:
+          - task: JavaToolInstaller@0
+            displayName: Java 17
+            inputs:
+              versionSpec: '17'
+              jdkArchitectureOption: x64
+              jdkSourceOption: PreInstalled
+
+          - task: Maven@4
+            displayName: Maven - testes e pacote (.jar)
+            inputs:
+              mavenPomFile: pom.xml
+              goals: package
+              publishJUnitResults: true
+              testResultsFiles: '**/surefire-reports/TEST-*.xml'
+
+          - task: CopyFiles@2
+            displayName: Separar o .jar
+            inputs:
+              SourceFolder: target
+              Contents: '*.jar'
+              TargetFolder: $(Build.ArtifactStagingDirectory)
+
+          - task: PublishPipelineArtifact@1
+            displayName: Publicar artefato no Azure DevOps
+            inputs:
+              targetPath: $(Build.ArtifactStagingDirectory)
+              artifact: solin-jar
+
+  # ---------- CD ----------
+  - stage: CD
+    displayName: CD - Deploy no Azure Web App
+    dependsOn: CI
+    jobs:
+      - job: deploy
+        displayName: Publicar no app-564099-solin
+        steps:
+          - checkout: none
+
+          - task: DownloadPipelineArtifact@2
+            displayName: Baixar o artefato do CI
+            inputs:
+              artifact: solin-jar
+              path: $(Pipeline.Workspace)/solin-jar
+
+          # Usuario e senha de publicacao ficam em variaveis secretas do pipeline
+          - script: |
+              curl --fail -X POST -u "$DEPLOY_USER:$DEPLOY_PASS" \
+                --data-binary @$(Pipeline.Workspace)/solin-jar/solin-api-0.0.1-SNAPSHOT.jar \
+                "https://app-564099-solin.scm.azurewebsites.net/api/publish?type=jar"
+            displayName: Deploy do .jar no Azure Web App
+            env:
+              DEPLOY_USER: $(DEPLOY_USER)
+              DEPLOY_PASS: $(DEPLOY_PASS)
