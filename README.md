@@ -1,6 +1,6 @@
 # SOLIN — Monitoramento de Saúde de Pets (Clyvo Vet)
 
-> Java Advanced — FIAP — Challenge 2026, 2º Semestre — Sprint 3
+> FIAP — Challenge 2026, 2º Semestre — **Sprint 4 (entrega final)**
 
 ##  Equipe — Turma 2TDSR
 
@@ -12,13 +12,38 @@
 | Samara Vilela | RM566133 |
 | Otávio Ferreira | RM565960 |
 
-##  Vídeo de apresentação
+##  Links da entrega final
 
-`https://www.youtube.com/watch?v=i8mMz05rV80`
+| O quê | Link |
+|---|---|
+| Aplicação no ar (Azure) | https://app-564099-solin.azurewebsites.net/solin/login |
+| Vídeo da apresentação (até 15 min) | `[link do YouTube]` |
+| Backlog, release plan e plano de testes (Azure Boards) | https://dev.azure.com/RM564099/SOLIN%20-%20Clyvo%20Vet |
+| Testes de sistema (manuais + Selenium IDE) | [`testes/`](testes/README.md) |
+
+**Para entrar sem cadastrar nada:** tutor `tutor.demo@solin.com` · veterinário `vet.demo@clyvovet.com.br` · senha `demo123`.
+
+##  O que a Sprint 4 trouxe
+
+- **Aplicação publicada na Azure:** App Service (Java 17) + Azure Database for PostgreSQL. Script linear em [`infra/deploy-azure.sh`](infra/deploy-azure.sh), um comando `az` por passo.
+- **Correção de defeito achado nos testes:** registrar um evento repetia um alerta que ainda estava pendente (ex.: "bebeu água" duplicava o alerta de urina). Agora cada alerta guarda a regra que o gerou (migration `V8`) e o `AlertaService` pula a regra que já tem alerta pendente para o pet.
+- **Plano de testes de sistema:** 12 casos com dados fixos no Azure Boards, ligados ao backlog, e 4 casos automatizados no Selenium IDE.
+
+##  Como cada disciplina entrou no SOLIN
+
+| Disciplina | O que entrou no projeto |
+|---|---|
+| Java Advanced | Esta aplicação: Spring Boot, Thymeleaf, Spring Security, Flyway, Strategy para as regras de alerta |
+| Compliance, QA & Tests | Backlog Scrum e release plan no Azure Boards; 12 casos de teste manuais; 4 automatizados no Selenium IDE |
+| DevOps Tools & Cloud Computing | Containers na Azure (Sprint 3, [`solin-sprint3-cloud`](https://github.com/natcsouza/solin-sprint3-cloud)); App Service + PostgreSQL gerenciado (Sprint 4) |
+| Disruptive Architectures (IoT/IA) | Coleira e tapete inteligente com ESP32 e sensor de umidade, eventos via MQTT (origem `SENSOR_IOT`, [`solin-iot`](https://github.com/Rcsilva05/solin-iot)); componente de IA documentado em [`clyvo-vet-ia-sprint3`](https://github.com/Rcsilva05/clyvo-vet-ia-sprint3) |
+| Mastering Relational and Non-Relational Database | Modelo relacional `TB_ESPECIE`, `TB_TUTOR`, `TB_PET`, `TB_EVENTO`, `TB_ALERTA` versionado nas migrations Flyway |
+| Mobile Application Development | App mobile que consome a API REST `/api/**` (check-in, histórico, notificações) · `[grupo: link do repositório]` |
+| Advanced Business Development with .NET | `[grupo: descrever e pôr o link do repositório .NET]` |
 
 ---
 
-O SOLIN nasceu como API REST nas Sprints 1 e 2 e virou aplicação web completa nesta Sprint 3, em **Spring Boot**. A ideia central não mudou: acompanhar a rotina diária de saúde de um pet (se urinou, se comeu, se bebeu água), seja o tutor registrando na mão ou um sensor IoT mandando os dados, e disparar um **alerta automático** quando algo sai do padrão esperado para aquela espécie. O que essa sprint trouxe de novo foi a tela em si — antes só existia a API — além de versionamento de banco com **Flyway** e login/permissões com **Spring Security**. O projeto é ambientado numa clínica fictícia, a **Clyvo Vet**.
+O SOLIN nasceu como API REST nas Sprints 1 e 2 e virou aplicação web completa na Sprint 3, em **Spring Boot**. A ideia central não mudou: acompanhar a rotina diária de saúde de um pet (se urinou, se comeu, se bebeu água), seja o tutor registrando na mão ou um sensor IoT mandando os dados, e disparar um **alerta automático** quando algo sai do padrão esperado para aquela espécie. O que essa sprint trouxe de novo foi a tela em si — antes só existia a API — além de versionamento de banco com **Flyway** e login/permissões com **Spring Security**. O projeto é ambientado numa clínica fictícia, a **Clyvo Vet**.
 
 ---
 

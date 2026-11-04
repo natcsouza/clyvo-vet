@@ -1,0 +1,515 @@
+{
+  "id": "b21549b9-4cb2-4afb-b8d1-746bf86cb516",
+  "version": "2.0",
+  "name": "SOLIN - Testes de Sistema (Sprint 4)",
+  "url": "http://localhost:8080",
+  "tests": [
+    {
+      "id": "285e0a19-e6ce-4378-91d2-2423ddac0433",
+      "name": "CT03 - Login de tutor com credencial valida",
+      "commands": [
+        {
+          "id": "94099cd7-d116-40d4-993f-09761044031d",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1280x800",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "b00a2ee9-1648-4305-8b89-856fbddf6906",
+          "comment": "",
+          "command": "open",
+          "target": "/solin/login",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "f0a2c755-66c8-46d7-a7b0-9d12037d8d7b",
+          "comment": "",
+          "command": "type",
+          "target": "id=username",
+          "targets": [],
+          "value": "tutor.demo@solin.com"
+        },
+        {
+          "id": "3f80c418-3a3d-495e-91e4-76340092d4da",
+          "comment": "",
+          "command": "type",
+          "target": "id=password",
+          "targets": [],
+          "value": "demo123"
+        },
+        {
+          "id": "3860ed23-b6de-4517-9b63-3607465b5104",
+          "comment": "",
+          "command": "click",
+          "target": "xpath=//form[not(contains(@action,\"logout\"))]//button[@type=\"submit\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "ec2ed4b2-a78a-4ca2-b1d7-1599204afc40",
+          "comment": "espera o login terminar",
+          "command": "waitForElementPresent",
+          "target": "css=main",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "fe915d39-0bb0-4c32-bc93-42a42b29dba1",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=main",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "9de4c55a-cd25-4f0a-8876-eccae2ccc6e5",
+          "comment": "",
+          "command": "assertElementPresent",
+          "target": "xpath=//main[contains(normalize-space(.),\"Meus pets\")]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "0e59e3bb-3fc6-426b-b80d-ceb416f681d1",
+          "comment": "",
+          "command": "assertElementPresent",
+          "target": "linkText=Registrar evento",
+          "targets": [],
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "2d3ebf39-a692-401a-a4a8-4143ed4c985f",
+      "name": "CT05 - Cadastrar pet com dados validos",
+      "commands": [
+        {
+          "id": "ad8baea0-fa21-4e46-8fcc-3620beaede0e",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1280x800",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "43248bb8-eebd-443f-850b-e3b66589a220",
+          "comment": "",
+          "command": "open",
+          "target": "/solin/login",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "8e50eacd-b313-44d0-848f-32e6c1e51b28",
+          "comment": "",
+          "command": "type",
+          "target": "id=username",
+          "targets": [],
+          "value": "tutor.demo@solin.com"
+        },
+        {
+          "id": "60721d5c-18e9-408d-9899-ac8ba90b5e7d",
+          "comment": "",
+          "command": "type",
+          "target": "id=password",
+          "targets": [],
+          "value": "demo123"
+        },
+        {
+          "id": "6d48efc9-dfbb-4b5d-b9e7-3e74771372b8",
+          "comment": "",
+          "command": "click",
+          "target": "xpath=//form[not(contains(@action,\"logout\"))]//button[@type=\"submit\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "74de5945-c5ae-4b93-ad17-3b547a5fbeef",
+          "comment": "espera o login terminar",
+          "command": "waitForElementPresent",
+          "target": "css=main",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "41e443ca-ab6c-4389-89f7-167e578864b9",
+          "comment": "",
+          "command": "open",
+          "target": "/solin/tutor/pets/novo",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "180e146b-3c7d-47f5-ae20-2e589f10ed79",
+          "comment": "",
+          "command": "type",
+          "target": "id=nome",
+          "targets": [],
+          "value": "Thor"
+        },
+        {
+          "id": "3c41420f-ec8a-4a40-82d5-a63dce4a5f63",
+          "comment": "",
+          "command": "select",
+          "target": "id=especieId",
+          "targets": [],
+          "value": "label=Cachorro"
+        },
+        {
+          "id": "1b3b0ffa-cc99-4ce6-8203-8f2735475549",
+          "comment": "",
+          "command": "type",
+          "target": "id=raca",
+          "targets": [],
+          "value": "Labrador"
+        },
+        {
+          "id": "d9a010ad-a878-4664-9689-5c8678f34dd4",
+          "comment": "",
+          "command": "type",
+          "target": "id=idadeAnos",
+          "targets": [],
+          "value": "3"
+        },
+        {
+          "id": "73cc5e61-bdb9-4ab4-8a4b-3c97916a8ea8",
+          "comment": "",
+          "command": "select",
+          "target": "id=sexo",
+          "targets": [],
+          "value": "value=MACHO"
+        },
+        {
+          "id": "87041824-7e47-4f1c-b1aa-fb3812820586",
+          "comment": "",
+          "command": "type",
+          "target": "id=pesoKg",
+          "targets": [],
+          "value": "12.5"
+        },
+        {
+          "id": "0444f333-54df-4080-b9a4-3dfafb019474",
+          "comment": "",
+          "command": "click",
+          "target": "xpath=//form[not(contains(@action,\"logout\"))]//button[@type=\"submit\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "bc3c5dab-a145-4c81-8f6f-429a3ca19dbd",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=main",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "aa6a32dc-c238-4565-909f-797c1f2acfc8",
+          "comment": "",
+          "command": "assertElementPresent",
+          "target": "xpath=//main[contains(normalize-space(.),\"Pet Thor cadastrado com sucesso.\")]",
+          "targets": [],
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "396ec8c2-90eb-4613-b671-64eff6319967",
+      "name": "CT07 - Evento de urina ha 9 h gera alerta AMARELO",
+      "commands": [
+        {
+          "id": "a3d5d992-234e-4cbf-9006-2381b09d1fa0",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1280x800",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "0266f7b9-158a-4950-9ac8-4ed13eaa53a9",
+          "comment": "",
+          "command": "open",
+          "target": "/solin/login",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "37037dc5-2989-472f-8b2c-193cd0ee4f56",
+          "comment": "",
+          "command": "type",
+          "target": "id=username",
+          "targets": [],
+          "value": "tutor.demo@solin.com"
+        },
+        {
+          "id": "e8702437-dcb9-48fd-ae64-6aed40309bac",
+          "comment": "",
+          "command": "type",
+          "target": "id=password",
+          "targets": [],
+          "value": "demo123"
+        },
+        {
+          "id": "b8df5fbc-eb0d-46b7-8e5f-5866a23c9000",
+          "comment": "",
+          "command": "click",
+          "target": "xpath=//form[not(contains(@action,\"logout\"))]//button[@type=\"submit\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "60a74389-5c73-49f7-9d57-0350104f4087",
+          "comment": "espera o login terminar",
+          "command": "waitForElementPresent",
+          "target": "css=main",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "14790d0c-233a-4ab8-bba5-c76886184f13",
+          "comment": "",
+          "command": "open",
+          "target": "/solin/tutor/pets/novo",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "51df19fd-e33d-4045-9344-93ada7775067",
+          "comment": "",
+          "command": "type",
+          "target": "id=nome",
+          "targets": [],
+          "value": "Bidu"
+        },
+        {
+          "id": "b75d8535-5e5c-42d9-b426-852a1dbc52a8",
+          "comment": "",
+          "command": "select",
+          "target": "id=especieId",
+          "targets": [],
+          "value": "label=Cachorro"
+        },
+        {
+          "id": "c4f83fdf-f5c3-4c29-b240-02a40bc8ea73",
+          "comment": "",
+          "command": "select",
+          "target": "id=sexo",
+          "targets": [],
+          "value": "value=MACHO"
+        },
+        {
+          "id": "ae65babb-bbc3-414c-931f-d8be9aec2297",
+          "comment": "",
+          "command": "type",
+          "target": "id=pesoKg",
+          "targets": [],
+          "value": "10"
+        },
+        {
+          "id": "aea0b4b1-d480-4286-b3c8-fb6b6513c86d",
+          "comment": "",
+          "command": "click",
+          "target": "xpath=//form[not(contains(@action,\"logout\"))]//button[@type=\"submit\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "87983ea0-2222-4f99-86e0-b07e9ce9ac62",
+          "comment": "espera o pet ser salvo",
+          "command": "waitForElementPresent",
+          "target": "xpath=//main[contains(normalize-space(.),\"Pet Bidu cadastrado com sucesso.\")]",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "bfe8da11-3e54-4c66-b296-d1033488ff39",
+          "comment": "",
+          "command": "open",
+          "target": "/solin/tutor/eventos/novo",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "fce226c6-1b59-4124-9a59-26acd39e046b",
+          "comment": "",
+          "command": "select",
+          "target": "id=petId",
+          "targets": [],
+          "value": "label=Bidu · Cachorro"
+        },
+        {
+          "id": "86f41a7f-b3c4-45e1-be44-14fa6bbca1be",
+          "comment": "",
+          "command": "select",
+          "target": "id=tipo",
+          "targets": [],
+          "value": "value=URINOU"
+        },
+        {
+          "id": "38b3d5f0-858f-487d-bac0-f942c4d91b37",
+          "comment": "",
+          "command": "select",
+          "target": "id=origem",
+          "targets": [],
+          "value": "value=MANUAL"
+        },
+        {
+          "id": "cde75c4e-ed66-4929-8b3a-b16e6f58935c",
+          "comment": "data/hora = agora menos 9 horas",
+          "command": "executeScript",
+          "target": "const d=new Date(Date.now()-9*3600*1000); const p=n=>String(n).padStart(2,'0'); document.getElementById('dataHora').value=d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+'T'+p(d.getHours())+':'+p(d.getMinutes());",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "0f7e8c55-d512-4bc0-aa50-5cf06158196c",
+          "comment": "",
+          "command": "click",
+          "target": "xpath=//form[not(contains(@action,\"logout\"))]//button[@type=\"submit\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "c68bbaef-1de7-4706-a560-056871db65b0",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=main",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "1a85db47-ba08-477a-bf77-f4df5a70d344",
+          "comment": "",
+          "command": "assertElementPresent",
+          "target": "xpath=//main[contains(normalize-space(.),\"esse registro disparou um novo alerta para Bidu\")]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "0d84ac40-18df-445f-b72f-8e04d7c6aa65",
+          "comment": "",
+          "command": "assertElementPresent",
+          "target": "xpath=//main[contains(normalize-space(.),\"esta ha 9 horas sem registro de urina (limite normal: 8h)\")]",
+          "targets": [],
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "aa97929e-acae-4f14-9d11-6ecfdebc4a25",
+      "name": "CT10 - Veterinario resolve alerta critico",
+      "commands": [
+        {
+          "id": "285e9db4-c9d2-4264-b68e-a87184b16b3c",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1280x800",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "fb587a1c-6513-4b37-ad4e-f82c7ad12d51",
+          "comment": "",
+          "command": "open",
+          "target": "/solin/login",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "e815f952-9481-48c7-955b-964828ea8f30",
+          "comment": "",
+          "command": "type",
+          "target": "id=username",
+          "targets": [],
+          "value": "vet.demo@clyvovet.com.br"
+        },
+        {
+          "id": "ff8be271-39cf-4de1-bdcd-f933d59185ef",
+          "comment": "",
+          "command": "type",
+          "target": "id=password",
+          "targets": [],
+          "value": "demo123"
+        },
+        {
+          "id": "8e31c8ae-a013-4167-b132-1020543095ce",
+          "comment": "",
+          "command": "click",
+          "target": "xpath=//form[not(contains(@action,\"logout\"))]//button[@type=\"submit\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "a1abd763-dae4-4f52-8a57-4959ebfe7b44",
+          "comment": "espera o login terminar",
+          "command": "waitForElementPresent",
+          "target": "css=main",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "1bf804e7-19fd-41f4-ba47-3754dac1921f",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=main",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "a95974e2-b3cf-43b1-adf6-0239d43045c0",
+          "comment": "",
+          "command": "assertElementPresent",
+          "target": "xpath=//main[contains(normalize-space(.),\"Painel de alertas\")]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "ddfc56a1-4b46-4431-a9ad-72e13fcf9a77",
+          "comment": "",
+          "command": "click",
+          "target": "xpath=(//form[contains(@action,\"resolver\")]//button)[1]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "eb5f09d4-95e4-46ff-82d8-62a76fc05b0d",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=main",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "c37263a2-7270-41ff-b9f4-cc07b554fba4",
+          "comment": "",
+          "command": "assertElementPresent",
+          "target": "xpath=//main[contains(normalize-space(.),\"marcado como resolvido\")]",
+          "targets": [],
+          "value": ""
+        }
+      ]
+    }
+  ],
+  "suites": [
+    {
+      "id": "56db5ebc-5a6a-4da4-9c8b-2e0427483797",
+      "name": "Suite SOLIN",
+      "persistSession": false,
+      "parallel": false,
+      "timeout": 300,
+      "tests": [
+        "285e0a19-e6ce-4378-91d2-2423ddac0433",
+        "2d3ebf39-a692-401a-a4a8-4143ed4c985f",
+        "396ec8c2-90eb-4613-b671-64eff6319967",
+        "aa97929e-acae-4f14-9d11-6ecfdebc4a25"
+      ]
+    }
+  ],
+  "urls": [
+    "http://localhost:8080"
+  ],
+  "plugins": []
+}

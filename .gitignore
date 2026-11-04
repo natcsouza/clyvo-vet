@@ -24,3 +24,6 @@ Thumbs.db
 *.log
 application-local.properties
 .env
+
+# segredos do deploy
+infra/.env
