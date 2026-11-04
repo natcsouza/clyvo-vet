@@ -38,8 +38,8 @@
 | DevOps Tools & Cloud Computing | Containers na Azure (Sprint 3, [`solin-sprint3-cloud`](https://github.com/natcsouza/solin-sprint3-cloud)); App Service + PostgreSQL gerenciado (Sprint 4) |
 | Disruptive Architectures (IoT/IA) | Coleira e tapete inteligente com ESP32 e sensor de umidade, eventos via MQTT (origem `SENSOR_IOT`, [`solin-iot`](https://github.com/Rcsilva05/solin-iot)); componente de IA documentado em [`clyvo-vet-ia-sprint3`](https://github.com/Rcsilva05/clyvo-vet-ia-sprint3) |
 | Mastering Relational and Non-Relational Database | Modelo relacional `TB_ESPECIE`, `TB_TUTOR`, `TB_PET`, `TB_EVENTO`, `TB_ALERTA` versionado nas migrations Flyway |
-| Mobile Application Development | App mobile que consome a API REST `/api/**` (check-in, histórico, notificações) · `[grupo: link do repositório]` |
-| Advanced Business Development with .NET | `[grupo: descrever e pôr o link do repositório .NET]` |
+| Mobile Application Development | App mobile em React Native que consome a API REST do SOLIN: React Navigation com rotas protegidas, React Query e CRUDs completos |
+| Advanced Business Development with .NET | API em ASP.NET Core com Health Checks (incluindo Oracle), logs estruturados com Serilog, rastreamento e métricas com OpenTelemetry e testes automatizados |
 
 ---
 
