@@ -1,4 +1,4 @@
-# Pipeline CI/CD do SOLIN - Sprint 4 (DevOps Tools & Cloud Computing)
+# Pipeline CI/CD do SOLIN - Sprint 4 (DevOps Tools & Cloud Computing - prof. Menk)
 # CI: a cada push na branch master -> compila, roda os testes e publica o artefato (.jar)
 # CD: quando o CI gera um artefato novo -> publica o .jar no Azure Web App
 
