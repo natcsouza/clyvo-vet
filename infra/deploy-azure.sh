@@ -33,6 +33,9 @@ az appservice plan create --resource-group $RG --name $PLANO --location $LOCAL -
 # 5. Aplicacao web com Java 17
 az webapp create --resource-group $RG --plan $PLANO --name $APP --runtime "JAVA:17-java17"
 
+# 5b. O App Service roda o .jar que a pipeline publica
+az webapp config set --resource-group $RG --name $APP --startup-file "java -jar /home/site/wwwroot/solin-api-0.0.1-SNAPSHOT.jar"
+
 # 6. Variaveis de ambiente que o SOLIN le (application.properties)
 az webapp config appsettings set --resource-group $RG --name $APP --settings \
   DB_URL="jdbc:postgresql://$DB_SERVER.postgres.database.azure.com:5432/$DB_NOME?sslmode=require" \
