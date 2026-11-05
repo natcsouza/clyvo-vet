@@ -63,12 +63,14 @@ stages:
               artifact: solin-jar
               path: $(Pipeline.Workspace)/solin-jar
 
-          # Usuario e senha de publicacao ficam em variaveis secretas do pipeline
-          - script: |
-              curl --fail -X POST -u "$DEPLOY_USER:$DEPLOY_PASS" \
-                --data-binary @$(Pipeline.Workspace)/solin-jar/solin-api-0.0.1-SNAPSHOT.jar \
-                "https://app-564099-solin.scm.azurewebsites.net/api/publish?type=jar"
-            displayName: Deploy do .jar no Azure Web App
-            env:
-              DEPLOY_USER: $(DEPLOY_USER)
-              DEPLOY_PASS: $(DEPLOY_PASS)
+          # Publica o .jar no Web App e configura o banco.
+          # DB_USER e DB_PASSWORD sao variaveis secretas do pipeline (nao ficam no codigo).
+          - task: AzureWebApp@1
+            displayName: Deploy no Azure Web App
+            inputs:
+              azureSubscription: azure-solin
+              appType: webAppLinux
+              appName: app-564099-solin
+              package: $(Pipeline.Workspace)/solin-jar/solin-api-0.0.1-SNAPSHOT.jar
+              runtimeStack: 'JAVA|17-java17'
+              appSettings: -DB_USER $(DB_USER) -DB_PASSWORD $(DB_PASSWORD)

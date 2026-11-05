@@ -47,8 +47,8 @@
 1. Um push na branch `master` do GitHub dispara o pipeline (webhook).
 2. **CI:** instala o Java 17, roda `mvn package`, que compila e executa os testes de unidade (JUnit 5 + Mockito). Os resultados dos testes aparecem na aba *Tests* da execução.
 3. **CI:** o `.jar` é publicado como artefato `solin-jar` no Azure DevOps.
-4. **CD:** só começa quando o CI termina com um artefato novo. Ele baixa o artefato e publica o `.jar` no Azure App Service `app-564099-solin`.
-5. O usuário e a senha de publicação ficam em **variáveis secretas** do pipeline (`DEPLOY_USER`, `DEPLOY_PASS`). As credenciais do banco ficam nas configurações do App Service, fora do código.
+4. **CD:** só começa quando o CI termina com um artefato novo. Ele baixa o artefato e publica o `.jar` no Azure App Service `app-564099-solin` com a tarefa **Azure Web App** (conexão de serviço `azure-solin`).
+5. O usuário e a senha do banco ficam em **variáveis secretas** do pipeline (`DB_USER`, `DB_PASSWORD`) e o CD as aplica no App Service. Elas não aparecem no código nem no log.
 
 ##  Como cada disciplina entrou no SOLIN
 
