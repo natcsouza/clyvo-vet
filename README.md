@@ -29,13 +29,34 @@
 - **Correção de defeito achado nos testes:** registrar um evento repetia um alerta que ainda estava pendente (ex.: "bebeu água" duplicava o alerta de urina). Agora cada alerta guarda a regra que o gerou (migration `V8`) e o `AlertaService` pula a regra que já tem alerta pendente para o pet.
 - **Plano de testes de sistema:** 12 casos com dados fixos no Azure Boards, ligados ao backlog, e 4 casos automatizados no Selenium IDE.
 
+##  DevOps — CI/CD no Azure DevOps (Sprint 4)
+
+| O quê | Link |
+|---|---|
+| Projeto no Azure DevOps | https://dev.azure.com/RM564099/Sprint%204%20%E2%80%93%20Azure%20DevOps |
+| Pipeline (YAML) | [`azure-pipelines.yml`](azure-pipelines.yml) |
+| Aplicação publicada pelo CD | https://app-564099-solin.azurewebsites.net/solin/login |
+
+**O que a aplicação faz:** o SOLIN acompanha a rotina de saúde de pets (urina, água, comida) e gera alertas automáticos para o tutor e para a clínica Clyvo Vet quando algo sai do normal da espécie.
+
+**Stack:** Java 17 · Spring Boot 3 · Spring Security · Thymeleaf · Flyway · PostgreSQL (Azure Database for PostgreSQL, PaaS) · Azure App Service (Linux) · Azure DevOps Pipelines · GitHub · JUnit 5 + Mockito.
+
+![Arquitetura e fluxo CI/CD](docs/arquitetura-cicd.png)
+
+**Como a esteira funciona (pipeline YAML, multi-stage):**
+1. Um push na branch `master` do GitHub dispara o pipeline (webhook).
+2. **CI:** instala o Java 17, roda `mvn package`, que compila e executa os testes de unidade (JUnit 5 + Mockito). Os resultados dos testes aparecem na aba *Tests* da execução.
+3. **CI:** o `.jar` é publicado como artefato `solin-jar` no Azure DevOps.
+4. **CD:** só começa quando o CI termina com um artefato novo. Ele baixa o artefato e publica o `.jar` no Azure App Service `app-564099-solin`.
+5. O usuário e a senha de publicação ficam em **variáveis secretas** do pipeline (`DEPLOY_USER`, `DEPLOY_PASS`). As credenciais do banco ficam nas configurações do App Service, fora do código.
+
 ##  Como cada disciplina entrou no SOLIN
 
 | Disciplina | O que entrou no projeto |
 |---|---|
 | Java Advanced | Esta aplicação: Spring Boot, Thymeleaf, Spring Security, Flyway, Strategy para as regras de alerta |
 | Compliance, QA & Tests | Backlog Scrum e release plan no Azure Boards; 12 casos de teste manuais; 4 automatizados no Selenium IDE |
-| DevOps Tools & Cloud Computing | Containers na Azure (Sprint 3, [`solin-sprint3-cloud`](https://github.com/natcsouza/solin-sprint3-cloud)); App Service + PostgreSQL gerenciado (Sprint 4) |
+| DevOps Tools & Cloud Computing | Containers na Azure (Sprint 3, [`solin-sprint3-cloud`](https://github.com/natcsouza/solin-sprint3-cloud)); pipeline CI/CD no Azure DevOps com deploy no App Service + PostgreSQL gerenciado (Sprint 4) |
 | Disruptive Architectures (IoT/IA) | Coleira e tapete inteligente com ESP32 e sensor de umidade, eventos via MQTT (origem `SENSOR_IOT`, [`solin-iot`](https://github.com/Rcsilva05/solin-iot)); componente de IA documentado em [`clyvo-vet-ia-sprint3`](https://github.com/Rcsilva05/clyvo-vet-ia-sprint3) |
 | Mastering Relational and Non-Relational Database | Modelo relacional `TB_ESPECIE`, `TB_TUTOR`, `TB_PET`, `TB_EVENTO`, `TB_ALERTA` versionado nas migrations Flyway |
 | Mobile Application Development | App mobile em React Native que consome a API REST do SOLIN: React Navigation com rotas protegidas, React Query e CRUDs completos |
